@@ -214,8 +214,6 @@ int main()
 
 	}
 	//cout << EmpList.searchlist("salon") << endl;
-	//cout<<EmpList.searchlist("boomer sooner","Boom")<<endl;
-	//cout<<EmpList.searchlist("boomer sooner","bum")<<endl;
 	//EmpList.searchlist();
 	//Why wont you work!? am i stupid or blind
 
