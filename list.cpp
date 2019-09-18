@@ -102,13 +102,13 @@ public:
 	//NOT WORKING - cause either it or i have no brain
 	//function that searches the list for substring "salon"
 	// and writes the email adresses
-	bool searchlist(string micro) {
+	/*bool searchlist(string micro) {
 		Employee* Temp = Head;
 		while (Temp != NULL) {
 			return (Temp->find(micro) != std::string::npos);
 		}
 		Temp = Temp->Next;
-	}
+	}*/
 
 
 	//Funtion to remove the first employee in the list
@@ -213,7 +213,7 @@ int main()
 		}
 
 	}
-	cout << EmpList.searchlist("salon") << endl;
+	//cout << EmpList.searchlist("salon") << endl;
 	//cout<<EmpList.searchlist("boomer sooner","Boom")<<endl;
 	//cout<<EmpList.searchlist("boomer sooner","bum")<<endl;
 	//EmpList.searchlist();
