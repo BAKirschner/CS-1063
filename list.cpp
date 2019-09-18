@@ -105,7 +105,7 @@ public:
 	/*bool searchlist(string micro) {
 		Employee* Temp = Head;
 		while (Temp != NULL) {
-			return (Temp->find(micro) != std::string::npos);
+			return (Temp->email.find(micro) != std::string::npos);
 		}
 		Temp = Temp->Next;
 	}*/
