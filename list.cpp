@@ -99,16 +99,20 @@ public:
 		}
 	}
 
-	//NOT WORKING - cause either it or i have no brain
 	//function that searches the list for substring "salon"
 	// and writes the email adresses
-	/*bool searchlist(string micro) {
-		Employee* Temp = Head;
-		while (Temp != NULL) {
-			return (Temp->email.find(micro) != std::string::npos);
-		}
-		Temp = Temp->Next;
-	}*/
+	 void searchlist(string micro){
+	Employee* Temp = Head;
+	while (Temp != NULL){
+    if(Temp->email.find(micro) != std::string::npos && Head!= NULL)
+    {
+	cout << (Temp->email) << endl;
+  Temp = Temp->Next;
+    }
+    else Temp = Temp->Next;
+	}
+	
+	}
 
 
 	//Funtion to remove the first employee in the list
@@ -131,8 +135,8 @@ public:
 
 		while (Temp != NULL && count < 30) {
 			cout << Temp->emp_id << ", " << Temp->first_name << ", " 
-				<< Temp->last_name << ", " << Temp->gender << ", " 
-				<< Temp->email << ", " << Temp->hourly_pay;
+      << Temp->last_name << ", " << Temp->gender << ", " 
+      << Temp->email << ", " << Temp->hourly_pay;
 			if (Temp->Next) {
 				cout << "\n";
 			}
@@ -143,20 +147,29 @@ public:
 
 	//Not Working
 	//function to remove an item from the list based on email 
-	void RemoveEmp() {
-		//kill me
+	void RemoveEmp(string micro) {
+		Employee* Temp = Head;
+	while (Temp != NULL){
+    if(Temp->email.find(micro) != std::string::npos && Head!= NULL)
+    {
+      Employee *Temp = Temp->Next;
+	    delete Temp;
+      Temp = Temp->Next;
+    }
+    else Temp = Temp->Next;
+	}
 	}
 };
 
 //provides a menu for easier testing/user understanding
-//not sure if really necessary, but hey its kinda nice
+//not sure if really necessary but hey its kinda nice
 int menu() {
 	int choice = 0;
 	while (choice <= 0 || choice > 5) {
 
 		cout << "\nMain Menu\n" << "Please Choose an Option\n";
-		cout << "1: Print first 30 Employies in List to file\n" << "2: Add Employee\n"
-			<< "3: Remove first Employee\n" << "4: Delete Employee from list\n"
+		cout << "1: Print first 30 Employies in List\n" << "2: Add Employee\n"
+			<< "3: Remove first Employee\n" << "4: Delete Employee from list NOT WORKING\n"
 			<< "5: Quit\n";
 		cin >> choice;
 	}
@@ -169,6 +182,7 @@ int main()
 	ofstream outfile;
 	outfile.open("output.txt");
 	outfile << "Brennan Kirschner\n\n";
+  //make sure to go back and have everything print here
 
 	LinkedList EmpList;
 
@@ -211,13 +225,16 @@ int main()
 		}
 		if (choice == 4)
 		{
-			EmpList.RemoveEmp();
+      string yourefired;
+      cout << "Please Enter the email of the employee that you would like to remove\n";
+      cin >> yourefired;
+			EmpList.RemoveEmp(yourefired);
 		}
 
 	}
-	//cout << EmpList.searchlist("salon") << endl;
-	//EmpList.searchlist();
-	//Why wont you work!? am i stupid or blind
+//print out all employee emails that contain "salon"
+//should i put in menu?
+	EmpList.searchlist("salon");
 
 	outfile.close();
 	return 0;
