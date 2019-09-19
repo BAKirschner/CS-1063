@@ -130,7 +130,9 @@ public:
 		int count = 0;
 
 		while (Temp != NULL && count < 30) {
-			cout << Temp->emp_id << ", " << Temp->first_name << ", " << Temp->last_name << ", " << Temp->gender << ", " << Temp->email << ", " << Temp->hourly_pay;
+			cout << Temp->emp_id << ", " << Temp->first_name << ", " 
+				<< Temp->last_name << ", " << Temp->gender << ", " 
+				<< Temp->email << ", " << Temp->hourly_pay;
 			if (Temp->Next) {
 				cout << "\n";
 			}
