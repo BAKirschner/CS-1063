@@ -1,0 +1,217 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+/*
+Function: sumArrays
+Purpose:
+  Sum all of the values in three int arrays and return the sum to main
+Params:
+  int A[], int B[], int C[]  - the arrays of integers
+  int size - the sice of the arrays
+Returns:
+  sum - the summ of all ints int the arrays
+*/
+int sumArrays(int A[], int B[], int C[], int size)
+{
+  int sum = 0;
+  for(int i=0; i<size; i++)
+  {
+    sum+=A[i];
+    sum+=B[i];
+    sum+=C[i];
+  }
+return sum;
+}
+
+/*
+Function: avg2D
+Purpose:
+  find the average of the values in a 2d array
+Params:
+  int A[][]  - the array of integers
+  int size - the sice of the array
+Returns:
+  average - the average of the values in the array
+*/
+double avg2D (int A[5][5], int size)
+{
+  int sum = 0;
+  double average;
+
+  for(int i=0; i<size; i++)
+  {for(int j=0; j<size; j++)
+    { 
+      sum+= A[i][j]; 
+    }
+  }
+  average = sum/size;
+
+  return average;
+}
+
+/*
+Function: triangle
+Purpose:
+  Print out a fancy triangle thats row double in sise as they
+  approach a given size
+Params:
+  int size - the size of the triangle
+Returns:
+  NA
+*/
+void triangle(int size)
+{
+ size *=size; 
+  for(int i=2;i<=size;i*=2){
+     for(int j=0;j<i;j+=2){
+        cout<<"X";
+     }
+     cout<<endl;
+  }
+}
+
+//Struct used for Problems 4 and 5
+struct Stats{
+   int min;
+   int max;
+   double avg;
+   int sum;  
+};
+
+/*
+Function: aggrgatevals
+Purpose:
+  aggregate the min, max, and average values of an array into
+  the struct Stats
+Params:
+  int A[] - the array of ints
+  size - the size of the array
+Returns:
+  S.min - the smallest value
+  S.max - the largest value
+  S.avg - the average of the array
+*/
+Stats aggregatevals (int A[], int size)
+{
+   Stats S;
+  S.min = A[0];
+  S.max = A[0];
+  S.avg = 0.0;
+  
+  for(int i=0;i<size;i++){
+    if(A[i] < S.min){
+       S.min = A[i];
+    }
+    if(A[i] > S.max){
+      S.max = A[i];
+    }
+    
+    S.avg += A[i];
+    
+  }
+  S.avg /= size;
+
+  //cout << S.avg << endl;
+  //cout << S.max << endl;
+  //cout << S.min << endl;
+  
+  return S;
+}
+
+/*
+Function: CalcStdDev
+Purpose:
+  Calculates the standard deviation of the numbers in an array
+Params:
+  int A[] - the array of ints
+  size - the size of the array
+Returns:
+  StdDev - the standard deviation
+*/
+double CalcStdDev(int A[], int size)
+{
+  int sum = 0, sum2 = 0;
+  double StdDev = 0.0, mean =0.0, mean2 = 0.0;
+   
+   for(int i=0; i<size; i++)
+  {
+    sum+=A[i];
+  }
+  mean = sum/size;
+
+  for(int i=0; i<size; i++)
+  {
+    A[i] = A[i]-mean;
+    A[i] *= A[i];
+  }
+
+  for(int i=0; i<size; i++)
+  {
+    sum2+=A[i];
+  }
+  mean2 = sum2/size;
+
+  StdDev = sqrt(mean2);
+
+  return StdDev;
+} 
+
+int main()
+ {
+   cout << "Brennan Kirschenr\n";
+
+   //Problem 1
+   cout << "\nProbleam 1\n";
+  int Size = 5;
+  int Arr1[5] = {1, 2, 3, 4, 5};
+  int Arr2[5] = {1, 2, 3, 4, 5};
+  int Arr3[5] = {1, 2, 3, 4, 5};
+
+  cout << sumArrays(Arr1, Arr2, Arr3, Size) << endl;
+
+  //Problem 2
+  cout << "\nProblem 2\n";
+  int size2d = 5;
+  int Arr2d[5][5] = 
+  {
+    {1, 2, 3, 4, 5},
+    {1, 2, 3, 4, 5},
+    {1, 2, 3, 4, 5},
+    {1, 2, 3, 4, 5},
+    {1, 2, 3, 4, 5},
+  };
+
+  cout << avg2D(Arr2d, size2d) << endl;
+
+  //Problem 3
+  //Ok, so it works up to 4 and then it get weirdly inconsistant
+  //giving me 4 rows if trisize is 5, 5 rows if it is 6 or 7, 
+  //6 rows if it is 8,9,10,or 11 and 7 rows if it is 12 WTF
+  //some kind of error that stack as it gets bigger?
+  cout << "\nProblem 3\n";
+  int trisize = 4;
+  triangle(trisize);
+
+  //Problem 4
+  int ArrStats[9] = {1, 2, 3, 4, 5, 6, 7, 8, 10};
+  int StatsSize = 9;
+  aggregatevals (ArrStats, StatsSize);
+
+  //Problem 5
+  //what is meant by "correct values"
+  //do we use the values we just calculated?
+  //doesnt aggregatstats already do that?
+
+  //Problem 6
+  cout << "\nProblem 6\n";
+  int SDArr[5] = {1, 3, 5, 7, 9};
+  int SDsize = 5;
+  cout << CalcStdDev(SDArr, SDsize);
+  //Problem 7
+
+
+  return 0;
+}
