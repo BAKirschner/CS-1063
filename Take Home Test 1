@@ -228,7 +228,7 @@ int main()
   //Problem 3
   //Ok, so it works up to 4 and then it get weirdly inconsistant
   //giving me 4 rows if trisize is 5, 5 rows if it is 6 or 7, 
-  //6 rows if it is 8,9,10,or 11 and 7 rows if it is 12 WTF
+  //6 rows if it is 8,9,10,or 11 and 7 rows if it is 12
   //some kind of error that stack as it gets bigger?
   cout << "\nProblem 3\n";
   int trisize = 4;
