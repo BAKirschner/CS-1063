@@ -129,6 +129,15 @@ bool Stack::Full(){
   return (Top == Size - 1);
 }
 
+/**
+ * CheckResizeGrow
+ * Description:
+ *    checks if the stack needs to be resized and calls enlarge
+ * Params:
+ *    void
+ *Returns:
+ *    void
+ */
 void Stack::CheckResizeGrow(){
   double percent = Top / (double)Size;
 
@@ -136,6 +145,15 @@ void Stack::CheckResizeGrow(){
   {Enlarge();}
 }
 
+/**
+ * Enlarge
+ * Description:
+ *    doubles the size of the stack if called by CheckResizeGrow
+ * Params:
+ *    void
+ *Returns:
+ *    void
+ */
 void Stack::Enlarge(){
   int newsize = Size * 2;
   int* NewArr = new int[newsize];
@@ -150,6 +168,15 @@ void Stack::Enlarge(){
   Size = newsize;
 }
 
+/**
+ * CheckResizeShrink
+ * Description:
+ *    checks if the stack needs to be resized and calls reduce
+ * Params:
+ *    void
+ *Returns:
+ *    void
+ */
 void Stack::CheckResizeShrink(){
   double percent = Top / (double)Size;
     
@@ -157,6 +184,15 @@ void Stack::CheckResizeShrink(){
   {Reduce();}
 }
 
+/**
+ * Reduce
+ * Description:
+ *    halves the size of the stack if called by CheckResizeShrink
+ * Params:
+ *    void
+ *Returns:
+ *    void
+ */
 void Stack::Reduce(){
   int newsize2 = Size * 0.5;
   int* NewArr2 = new int[newsize2];
